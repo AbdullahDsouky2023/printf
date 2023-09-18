@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _puts - prints a string with newline
+ * _puts1 - prints a string with newline
  * @str: the string to print
  *
  * Return: void
@@ -16,8 +16,8 @@ int _puts1(char *str)
 }
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
+ * _putchar2 - writes the character c to stdout
+ * @s: The character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
