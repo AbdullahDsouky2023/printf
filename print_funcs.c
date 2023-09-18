@@ -13,11 +13,11 @@ int print_char(va_list ap, params_t *params)
 	unsigned int pad = 1, sum = 0, ch = va_arg(ap, int);
 
 	if (params->minus_flag)
-		sum += _putchar(ch);
+		sum += _putchar2(ch);
 	while (pad++ < params->width)
-		sum += _putchar(pad_char);
+		sum += _putchar2(pad_char);
 	if (!params->minus_flag)
-		sum += _putchar(ch);
+		sum += _putchar2(ch);
 	return (sum);
 }
 
@@ -66,19 +66,19 @@ int print_string(va_list ap, params_t *params)
 	{
 		if (params->precision != UINT_MAX)
 			for (i = 0; i < pad; i++)
-				sum += _putchar(*str++);
+				sum += _putchar2(*str++);
 		else
-			sum += _puts(str);
+			sum += _puts1(str);
 	}
 	while (j++ < params->width)
-		sum += _putchar(pad_char);
+		sum += _putchar2(pad_char);
 	if (!params->minus_flag)
 	{
 		if (params->precision != UINT_MAX)
 			for (i = 0; i < pad; i++)
-				sum += _putchar(*str++);
+				sum += _putchar2(*str++);
 		else
-			sum += _puts(str);
+			sum += _puts1(str);
 	}
 	return (sum);
 }
@@ -94,7 +94,7 @@ int print_percent(va_list ap, params_t *params)
 {
 	(void)ap;
 	(void)params;
-	return (_putchar('%'));
+	return (_putchar2('%'));
 }
 
 /**
@@ -111,21 +111,21 @@ int print_S(va_list ap, params_t *params)
 	int sum = 0;
 
 	if ((int)(!str))
-		return (_puts(NULL_STRING));
+		return (_puts1(NULL_STRING));
 	for (; *str; str++)
 	{
 		if ((*str > 0 && *str < 32) || *str >= 127)
 		{
-			sum += _putchar('\\');
-			sum += _putchar('x');
+			sum += _putchar2('\\');
+			sum += _putchar2('x');
 			hex = convert(*str, 16, 0, params);
 			if (!hex[1])
-				sum += _putchar('0');
-			sum += _puts(hex);
+				sum += _putchar2('0');
+			sum += _puts1(hex);
 		}
 		else
 		{
-			sum += _putchar(*str);
+			sum += _putchar2(*str);
 		}
 	}
 	return (sum);

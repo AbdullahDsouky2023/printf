@@ -6,13 +6,13 @@
  *
  * Return: void
  */
-int _puts(char *str)
+int _puts1(char *string)
 {
-	char *a = str;
+	char *a = string;
 
-	while (*str)
-		_putchar(*str++);
-	return (str - a);
+	while (*string)
+		_putchar2(*string++);
+	return (string - a);
 }
 
 /**
@@ -22,17 +22,17 @@ int _puts(char *str)
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(int c)
+int _putchar2(int s)
 {
 	static int i;
 	static char buf[OUTPUT_BUF_SIZE];
 
-	if (c == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
+	if (s == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
 	{
 		write(1, buf, i);
 		i = 0;
 	}
-	if (c != BUF_FLUSH)
-		buf[i++] = c;
+	if (s != BUF_FLUSH)
+		buf[i++] = s;
 	return (1);
 }
